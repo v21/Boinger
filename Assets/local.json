@@ -1,0 +1,10 @@
+﻿{"games" :
+
+[
+		{
+			"name" : "my super awesome game", 
+			"author" : "me" , 
+			"filePath" : "C:/Windows/system32/calc.exe"
+		}
+]
+}

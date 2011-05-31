@@ -1,0 +1,35 @@
+#ignore these
+Temp/
+Library/*
+
+#but don't ignore these
+!Library/EditorBuildSettings.asset
+!Library/InputManager.asset
+!Library/ProjectSettings.asset
+!Library/QualitySettings.asset
+!Library/TagManager.asset
+!Library/TimeManager.asset
+!Library/AudioManager.asset
+!Library/DynamicsManager.asset
+!Library/NetworkManager.asset
+
+
+
+#SharpDevelop solution stuff
+*.csproj
+*.pidb
+*.sln
+*.userprefs
+
+
+#also ignore svn stuff
+*.svn-base
+*.svn*
+
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
