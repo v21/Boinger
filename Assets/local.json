@@ -1,10 +1,25 @@
-﻿{"games" :
+﻿
+{"games" :
 
 [
 		{
 			"name" : "my super awesome game", 
 			"author" : "me" , 
-			"filePath" : "C:/Windows/system32/calc.exe"
+			"filePath" : "C:/Windows/system32/calc.exe",
+			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/vid1.ogg",
+			"splashIsVideo" : true
+		},
+		{
+			"name" : "game2", 
+			"author" : "me" , 
+			"filePath" : "C:/Windows/system32/calc.exe",
+			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/tex2.png"
+		},
+		{
+			"name" : "game3", 
+			"author" : "me" , 
+			"filePath" : "C:/Windows/system32/calc.exe",
+			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/tex3.png"
 		}
 ]
 }

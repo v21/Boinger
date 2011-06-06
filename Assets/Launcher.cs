@@ -11,14 +11,49 @@ public class Launcher : MonoBehaviour {
 		public string author;
 		public string name;
 		public string filePath;
+		public string splashScreenPath;
+		public Texture2D splashScreen = null;
+		public MovieTexture splashVideo = null;
+		public bool splashIsVideo = false;
+		
+		public IEnumerator LoadTexture(){
+			if (splashIsVideo){
+				WWW www = new WWW(splashScreenPath);
+				yield return www;
+				splashVideo = www.movie;
+			}
+			else {
+				WWW www = new WWW(splashScreenPath);
+				yield return www;
+				splashScreen = www.texture;
+			}
+			
+		}
+		
+		public void LaunchGame () {
+			
+			Process process = new Process();
+			process.StartInfo.FileName = filePath;
+			process.Start();
+			
+			//how do Events work in c#?  - trigger on process.Exited , assuming Unity is happy to run in the backround.
+			
+		}
+		
 	}
+	
+	
 	
 	public class ConfigFile {
 		public List<Game> games;
 		
+
+		
 	}
 	
 	public ConfigFile configFile;
+	
+	public int currentGameI = 0;
 	
 	public string localJsonPath;
 	// Use this for initialization
@@ -27,13 +62,36 @@ public class Launcher : MonoBehaviour {
 		configFile = ReadJson(localJsonPath);
 		
 		
+		foreach (Game game in configFile.games) {
+			StartCoroutine(game.LoadTexture());
+		}
+		
+		currentGameI = 0;
+		
 		//LaunchFile( "C:\\Windows\\system32\\calc.exe");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-	
+		if (Input.GetButtonDown("Left")){
+			currentGameI --;
+			
+		}
+		if (Input.GetButtonDown("Right")){
+			currentGameI ++;
+			
+		}
+		
+		if (Input.GetButtonDown("Launch")){
+			configFile.games[currentGameI].LaunchGame();
+		}
+		
+		currentGameI = currentGameI % configFile.games.Count;
+		if (currentGameI < 0){
+			currentGameI = configFile.games.Count -1 ;
+		}
+		
 	}
 	
 	ConfigFile ReadJson(string path){
@@ -44,21 +102,22 @@ public class Launcher : MonoBehaviour {
 	}
 	
 	void OnGUI(){
-		foreach (Game game in configFile.games){
-			
-			if (GUILayout.Button(game.name)) {
-				LaunchFile(game.filePath);
+		Game game = configFile.games[currentGameI];
+		
+		if (game.splashIsVideo){
+			if (game.splashVideo != null){
+				//TODO: render video
 			}
 		}
+		else {
 		
+		if (game.splashScreen != null){
+			GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height),game.splashScreen, ScaleMode.ScaleToFit, true);
+		}
+		}
 	}
 	
-	void LaunchFile (string path) {
-		
-		Process process = new Process();
-		process.StartInfo.FileName = path;
-		process.Start();
-		
-	}
+	
+
 	
 }
