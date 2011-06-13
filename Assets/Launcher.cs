@@ -12,7 +12,6 @@ public class Launcher : MonoBehaviour {
 	
 	public Process launched = null;
 	
-	public AudioClip audioclip;
 	
 	public class Game{
 		public string author;
