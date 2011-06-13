@@ -68,18 +68,25 @@ public class Launcher : MonoBehaviour {
 		
 		currentGameI = 0;
 		
+		
 		//LaunchFile( "C:\\Windows\\system32\\calc.exe");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+		if (guiTexture.texture == null){ //to handle rendering once it's loaded
+			ChangeTexture();
+		}
+		
 		if (Input.GetButtonDown("Left")){
 			currentGameI --;
+			ChangeTexture();
 			
 		}
 		if (Input.GetButtonDown("Right")){
 			currentGameI ++;
+			ChangeTexture();
 			
 		}
 		
@@ -94,6 +101,27 @@ public class Launcher : MonoBehaviour {
 		
 	}
 	
+	void ChangeTexture(){
+		Game game = configFile.games[currentGameI];
+		
+		if (game.splashIsVideo){
+			if (game.splashVideo != null){
+				
+				guiTexture.texture = game.splashVideo;
+				MovieTexture guiMovieTex = (MovieTexture)guiTexture.texture;
+				guiMovieTex.Play();
+				
+			}
+		}
+		else {
+		
+		if (game.splashScreen != null){
+				guiTexture.texture = game.splashScreen;
+		}
+		}
+		
+	}
+	
 	ConfigFile ReadJson(string path){
 		
 		StreamReader sr = new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read));
@@ -101,21 +129,6 @@ public class Launcher : MonoBehaviour {
 		
 	}
 	
-	void OnGUI(){
-		Game game = configFile.games[currentGameI];
-		
-		if (game.splashIsVideo){
-			if (game.splashVideo != null){
-				//TODO: render video
-			}
-		}
-		else {
-		
-		if (game.splashScreen != null){
-			GUI.DrawTexture(new Rect(0,0, Screen.width, Screen.height),game.splashScreen, ScaleMode.ScaleToFit, true);
-		}
-		}
-	}
 	
 	
 
