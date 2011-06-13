@@ -7,6 +7,8 @@ using LitJson;
 
 public class Launcher : MonoBehaviour {
 
+	public bool currentlyVideo;
+	
 	public class Game{
 		public string author;
 		public string name;
@@ -15,6 +17,8 @@ public class Launcher : MonoBehaviour {
 		public Texture2D splashScreen = null;
 		public MovieTexture splashVideo = null;
 		public bool splashIsVideo = false;
+		
+		
 		
 		public IEnumerator LoadTexture(){
 			if (splashIsVideo){
@@ -81,11 +85,25 @@ public class Launcher : MonoBehaviour {
 		
 		if (Input.GetButtonDown("Left")){
 			currentGameI --;
+			
+			currentGameI = currentGameI % configFile.games.Count;
+			if (currentGameI < 0){
+				currentGameI = configFile.games.Count -1 ;
+			}
+			
 			ChangeTexture();
 			
 		}
 		if (Input.GetButtonDown("Right")){
+			
 			currentGameI ++;
+			
+			currentGameI = currentGameI % configFile.games.Count;
+			if (currentGameI < 0){
+				currentGameI = configFile.games.Count -1 ;
+			}
+			
+			
 			ChangeTexture();
 			
 		}
@@ -94,28 +112,36 @@ public class Launcher : MonoBehaviour {
 			configFile.games[currentGameI].LaunchGame();
 		}
 		
-		currentGameI = currentGameI % configFile.games.Count;
-		if (currentGameI < 0){
-			currentGameI = configFile.games.Count -1 ;
-		}
+
 		
 	}
 	
 	void ChangeTexture(){
+		UnityEngine.Debug.Log("Changing to: " + currentGameI);
 		Game game = configFile.games[currentGameI];
+		
+		if (currentlyVideo){
+			MovieTexture guiMovieTex = (MovieTexture)guiTexture.texture;
+			guiMovieTex.Stop();
+		}
 		
 		if (game.splashIsVideo){
 			if (game.splashVideo != null){
 				
+				currentlyVideo = true;
+				
 				guiTexture.texture = game.splashVideo;
 				MovieTexture guiMovieTex = (MovieTexture)guiTexture.texture;
 				guiMovieTex.Play();
+				guiMovieTex.loop = true;
 				
 			}
 		}
 		else {
 		
 		if (game.splashScreen != null){
+				
+				currentlyVideo = false;
 				guiTexture.texture = game.splashScreen;
 		}
 		}
