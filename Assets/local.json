@@ -3,23 +3,42 @@
 
 [
 		{
-			"name" : "my super awesome game", 
+			"name" : "Brute and Flaps", 
 			"author" : "me" , 
-			"filePath" : "C:/Users/v21/Desktop/arcade games/Hot Cross Bunions (Arcade) v1/build_arcade_1/HOT CROSS BUNIONS.exe",
-			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/vid1.ogg",
+			"filePath" : "bruteAndFlaps.exe",
+			"splashScreenPath" : "bruteandflaps.png",
 			"splashIsVideo" : true
 		},
 		{
-			"name" : "game2", 
-			"author" : "me" , 
-			"filePath" : "C:/Users/v21/Desktop/arcade games/bruteAndFlaps.exe",
-			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/tex2.png"
+			"name" : "sky tank", 
+			"author" : "v21" , 
+			"filePath" : "sky tank/SkyTank.exe",
+			"splashScreenPath" : "file://skytank.png"
 		},
 		{
-			"name" : "game3", 
+			"name" : "cubes", 
 			"author" : "me" , 
-			"filePath" : "C:/Windows/system32/calc.exe",
-			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/tex3.png"
+			"filePath" : "cubes_arcade.exe",
+			"splashScreenPath" : "file://cubes_arcade.png",
+			"splashIsVideo" : true
+		},
+		{
+			"name" : "it's my birthday", 
+			"author" : "me" , 
+			"filePath" : "itsMyBirthdayICanDieIfIWantTo.exe",
+			"splashScreenPath" : "file://itsMyBirthdayICanDieIfIWantTo.png"
+		},
+		{
+			"name" : "sumo boss race", 
+			"author" : "me" , 
+			"filePath" : "SumoBOSSRace.exe",
+			"splashScreenPath" : "file://sumobossrace.png"
+		},
+		{
+			"name" : "big boss", 
+			"author" : "me" , 
+			"filePath" : "bigboss.exe",
+			"splashScreenPath" : "file://big boss.png"
 		}
 ]
 }

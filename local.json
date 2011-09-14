@@ -2,18 +2,19 @@
 {"games" :
 
 [
+
+		{
+			"name" : "game2", 
+			"author" : "me" , 
+			"filePath" : "C:/Users/Public/arcade games/SumoBOSSRace.exe",
+			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/tex2.png"
+		},
 		{
 			"name" : "my super awesome game", 
 			"author" : "me" , 
 			"filePath" : "C:/Users/v21/Desktop/arcade games/Hot Cross Bunions (Arcade) v1/build_arcade_1/HOT CROSS BUNIONS.exe",
 			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/vid1.ogg",
 			"splashIsVideo" : true
-		},
-		{
-			"name" : "game2", 
-			"author" : "me" , 
-			"filePath" : "C:/Users/v21/Desktop/arcade games/bruteAndFlaps.exe",
-			"splashScreenPath" : "file://C:/Users/v21/Documents/My Dropbox/Launcher/Assets/tex2.png"
 		},
 		{
 			"name" : "game3", 
